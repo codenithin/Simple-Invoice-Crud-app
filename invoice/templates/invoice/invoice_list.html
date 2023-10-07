@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% block content %}   
+    <h3>Invoice List</h3>
+    <table>
+        <tr>
+            <th>Invoice Number</th>
+            <th>Invoice description</th>
+            <th>paymentTerms</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>phone</th>
+            <th>senderAddress</th>
+            <th>clientAddress</th>
+            <th>Actions</th>
+        </tr>
+        {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.description }}</td>
+                <td>{{ invoice.paymentTerms }}</td>
+                <td>{{ invoice.first_name }}</td>
+                <td>{{ invoice.last_name }}</td>
+                <td>{{ invoice.email }}</td>
+                <td>{{ invoice.phone }}</td>
+                <td>{{ invoice.senderAddress }}</td>
+                <td>{{ invoice.clientAddress }}</td>
+                <td>
+                    <a href="{% url 'invoice_detail' invoice.id %}">Detail</a>
+                    <a href="{% url 'invoice_update' invoice.id %}">Update</a>
+                    <a href="{% url 'invoice_delete' invoice.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

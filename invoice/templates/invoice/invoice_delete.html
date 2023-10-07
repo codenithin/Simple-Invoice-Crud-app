@@ -1,0 +1,5 @@
+<form method="post">
+    <p>Are you sure you want to delete Invoice number "{{ object.id }}"?</p>
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+</form>

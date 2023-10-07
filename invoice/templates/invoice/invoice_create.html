@@ -1,0 +1,26 @@
+{% extends "invoice/base.html" %}
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
+{% block content %}
+    <form method="POST">
+    <h3>Create Invoice</h3>
+        {% csrf_token %}
+        {{ form.non_form_errors }}
+        {{ form.as_p }}
+        <h5>Add Items </h5>
+        {{ invoice_item_formset.non_form_errors }}
+        {{ invoice_item_formset.management_form }}
+        {% for form in invoice_item_formset %}
+            {{ form.non_form_errors }}
+            {{ form.as_p }}
+        {% endfor %}
+        <button type="submit">Create</button>
+    </form>
+
+{% endblock %}
+

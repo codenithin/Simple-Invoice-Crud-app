@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+{% block content %}   
+<h2>Display Invoice</h2>
+<form method="Get">
+    <div>
+        {% csrf_token %}
+        <form method="Get">
+        <h3>Create Invoice</h3>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <h5>Items </h5>
+            {{ invoice_item_formset.management_form }}
+            {% for form in invoice_item_formset %}
+                {{ form.as_p }}
+            {% endfor %}
+        </form>
+    
+    
+    
+</form>
+<a href="{url "list" }"></a>
+
+{% endblock %}
